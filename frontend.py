@@ -16,11 +16,23 @@ names = ["Wade Kelden"]
 usernames = ["wadek"]
 
 #load hased passwords 
-file_path = Path(__file__).parent/"hashed_pw.pk1"
-with file_path.open("rb") as file:
-    hashed_passwords = pickle.load(file)
+hashed_passwords = stauth.Hasher(['your_plaintext_password']).generate()
 
-authenticator = stauth.Authenticate(names, usernames, hashed_passwords, "sales_dashboard", "abcdef")
+credentials = {
+    "usernames": {
+        "jsmith": {
+            "name": "John Smith",
+            "password": hashed_passwords[0]
+        }
+    }
+}
+
+authenticator = stauth.Authenticate(
+    credentials,
+    cookie_name="sales_dashboard",
+    key="abcdef",
+    cookie_expiry_days=30
+)
 
 name, authentication_status, username = authenticator.login("Login", "main")
 
