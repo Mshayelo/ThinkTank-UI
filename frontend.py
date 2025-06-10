@@ -12,27 +12,15 @@ BACKEND_URL ="https://thinktank-backend-e8cxbzbxb9dmf5h8.southafricanorth-01.azu
 st.set_page_config(page_title="Think Tank AI Chatbot", page_icon="🤖", layout="wide")
 
 # ---USER AUTHENTICATION ---
-names = ["Wade Kelden"]
-usernames = ["wadek"]
+name = ["Wade Kelden"]
+username = ["wadek"]
 
 #load hased passwords 
-hashed_passwords = stauth.Hasher(['your_plaintext_password']).generate()
+file_path = Path(__file__).parent/"hashed_pw.pk1"
+with file_path.open("rb") as file:
+    hashed_passwords = pickle.load(file)
 
-credentials = {
-    "usernames": {
-        "jsmith": {
-            "name": "John Smith",
-            "password": hashed_passwords[0]
-        }
-    }
-}
-
-authenticator = stauth.Authenticate(
-    credentials,
-    cookie_name="sales_dashboard",
-    key="abcdef",
-    cookie_expiry_days=30
-)
+authenticator = stauth.Authenticate(name, username, hashed_passwords, "sales_dashboard", "abcdef", cookie_expiry_days=1)
 
 name, authentication_status, username = authenticator.login("Login", "main")
 
