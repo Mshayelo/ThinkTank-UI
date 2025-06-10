@@ -68,4 +68,4 @@ jobs:
         with:
           app-name: 'ThninktanktestG9'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FB295202255C4630976FE2ACAB7A9635 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E39F2F3B52EB4474870CC366FEA6E0A2 }}
