@@ -6,7 +6,7 @@ import time
 import streamlit_authenticator as stauth
 
 # Load backend API URL dynamically
-BACKEND_URL = "https://thinktank-backend-e8cxbzbxb9dmf5h8.southafricanorth-01.azurewebsites.net"
+BACKEND_URL = "https://think-tank-bot9-f6fhdpggfyexezgw.southafricanorth-01.azurewebsites.net/"
 
 # Set up basic page configuration
 st.set_page_config(page_title="Think Tank AI Chatbot", page_icon="🤖", layout="wide")
